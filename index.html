@@ -98,74 +98,76 @@
         }
 
         /* POPUP */
-.popup {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        z-index: 1000;
-    }
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 1000;
+        }
 
-    .popup-box {
-        background: #fff;
-        padding: 24px 20px;
-        border-radius: 16px;
-        max-width: 460px;
-        width: 100%;
-        max-height: 85vh;
-        overflow-y: auto;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        text-align: center;
-    }
-
-    .popup-box h3 {
-        font-size: 1.35rem;
-        margin-bottom: 16px;
-        color: #222;
-    }
-
-    .popup-box p {
-        text-align: left;
-        font-size: 0.96rem;
-        line-height: 1.65;
-        margin-bottom: 14px;
-        color: #444;
-    }
-
-    .popup-box strong {
-        color: #222;
-    }
-
-    .popup-box button {
-        margin-top: 20px;
-        padding: 10px 28px;
-        background: #333;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-
-    .popup-box button:hover {
-        background: #555;
-    }
-
-    @media (max-width: 480px) {
         .popup-box {
-            padding: 20px 16px;
+            background: #fff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            max-width: 460px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
+
         .popup-box h3 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            color: #222;
         }
+
         .popup-box p {
-            font-size: 0.92rem;
+            text-align: left;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            color: #444;
         }
-    }
+
+        .popup-box strong {
+            color: #222;
+        }
+
+        .popup-box button {
+            margin-top: 20px;
+            padding: 10px 28px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .popup-box button:hover {
+            background: #555;
+        }
+
+        @media (max-width: 480px) {
+            .popup-box {
+                padding: 20px 16px;
+            }
+
+            .popup-box h3 {
+                font-size: 1.25rem;
+            }
+
+            .popup-box p {
+                font-size: 0.92rem;
+            }
+        }
     </style>
 </head>
 
@@ -233,29 +235,33 @@
         window.onload = () => {
             const popup = document.createElement("div");
             popup.className = "popup";
-popup.innerHTML = `
+            popup.innerHTML = `
 <div class="popup-box">
     <h3>Không còn đếm tiếp, nhưng vẫn còn nhớ.</h3>
 
-    <p><strong>3 năm 7 tháng 15 ngày</strong> — một hành trình đã từng rất đẹp.<br>Mỗi người rồi sẽ bước tiếp, chỉ là không còn cùng nhau.</p>
+    <p><strong>3 năm 7 tháng 15 ngày</strong> — với người khác có thể chỉ là một khoảng thời gian, nhưng với anh đó là cả một đoạn đời có em ở bên. Không phải ngày nào cũng hoàn hảo, nhưng là những ngày thật — thật sự vui, thật sự buồn, và thật sự có ý nghĩa.</p>
 
-    <p>Vậy là thật sự kết thúc rồi. 3 năm 7 tháng 15 ngày — một khoảng thời gian không hề ngắn. Chúng ta đã cùng nhau đi qua rất nhiều kỷ niệm, có đẹp, có xấu, có vui, có buồn… và chắc chắn tất cả vẫn sẽ còn đọng lại đâu đó trong ký ức của cả hai.</p>
+    <p>Sau khi mất em, điều anh tiếc nhất không phải là việc chúng ta không còn đi cùng nhau, mà là cách anh đã đối xử với em khi vẫn còn cơ hội. Anh đã nóng nảy, đã lớn tiếng, đã để cảm xúc của mình làm em tổn thương nhiều hơn những gì em đáng phải chịu.</p>
 
-    <p>Anh biết rằng khi không còn anh, có thể em sẽ nhẹ lòng hơn, vui vẻ hơn, có nhiều bạn bè hơn và được sống đúng với sự tự do của mình. Anh nhận ra bản thân đã quá ích kỷ, luôn muốn giữ em cho riêng mình, vô tình khiến em ngột ngạt.</p>
+    <p>Anh biết em đã mệt. Mệt vì phải chịu đựng, mệt vì phải chờ anh thay đổi, mệt vì nhiều lần hy vọng rồi lại thất vọng. Và anh hiểu việc em rời đi không hẳn vì hết thương — mà vì em đã quá mỏi để tiếp tục cố gắng thay cho cả hai.</p>
 
-    <p>Vì cảm xúc cá nhân và sự nóng nảy, anh đã nhiều lần lớn tiếng, làm em tổn thương và không tôn trọng em theo cách mà em xứng đáng được nhận.</p>
+    <p>Anh không viết những dòng này để khiến em thấy có lỗi, cũng không phải để kéo em quay về khi em đang cố gắng bình yên. Anh chỉ muốn nói một điều mà trước đây anh chưa từng nói đủ rõ — anh thật sự thương em, và anh thật sự hối hận vì đã không dịu dàng với em sớm hơn.</p>
 
-    <p>Anh thật lòng cảm ơn em vì trong suốt hơn 3 năm qua, em đã cho anh rất nhiều cơ hội để thay đổi. Nhưng anh cũng phải thừa nhận rằng anh đã không làm tốt. Sự hối hận bây giờ có lẽ đã muộn, nhưng nó là điều chân thật nhất anh đang mang theo.</p>
+    <p>Có những lúc anh ước mình bình tĩnh hơn một chút, biết lắng nghe em nhiều hơn một chút, biết ôm em thay vì cố tranh đúng sai. Chỉ cần anh trưởng thành sớm hơn một chút thôi, có lẽ chúng ta đã không phải đứng ở khoảng cách này.</p>
 
-    <p>Khi em đọc những dòng này, anh không mong em quay lại, cũng không muốn em phải bận lòng thêm. Anh chỉ muốn em biết rằng anh thực sự trân trọng khoảng thời gian chúng ta đã có, và anh xin lỗi vì những tổn thương mà anh đã gây ra.</p>
+    <p>Anh không dám hứa những điều lớn lao. Chỉ là nếu trong lòng em vẫn còn một góc nhỏ dành cho anh, anh mong một ngày nào đó em có thể nhìn lại anh — không phải phiên bản cũ đã làm em tổn thương, mà là một người đang thật sự học cách yêu em đúng hơn.</p>
 
-    <p>Không phải lời xin lỗi để níu kéo, mà là lời xin lỗi để em có thể bước tiếp nhẹ nhàng hơn, và để anh đối diện với những thiếu sót của mình một cách trưởng thành.</p>
+    <p>Một người biết dịu dàng thay vì nóng nảy.<br>
+    Một người biết giữ em bằng sự thấu hiểu, không phải bằng kiểm soát.<br>
+    Một người mà khi ở cạnh, em không cần phải gồng mình nữa.</p>
 
-    <p>Anh hy vọng rằng sau này, dù em đi cùng ai, em vẫn sẽ được yêu thương, được tôn trọng và được là chính mình — theo cách mà đáng lẽ anh phải làm tốt hơn.</p>
+    <p>Còn nếu em đã thật sự buông, anh vẫn sẽ tôn trọng quyết định đó. Chỉ là anh không muốn rời khỏi cuộc đời em trong im lặng, khi trong lòng mình vẫn còn quá nhiều điều chưa kịp làm tốt.</p>
 
-    <p>Cảm ơn em vì đã từng xuất hiện trong cuộc đời anh, đã yêu anh, đã kiên nhẫn với anh, và đã cho anh những ký ức mà anh sẽ luôn trân trọng.</p>
+    <p>Anh vẫn ở đây — không phải để níu kéo em bằng lời nói, mà bằng sự thay đổi từng ngày, dù em có nhìn thấy hay không.</p>
 
-    <p><strong>Chúc em bình an và hạnh phúc trên con đường phía trước.</strong></p>
+    <p><strong>Và dù sau này em đi về phía nào, anh vẫn biết ơn vì đã từng có em trong cuộc đời.</strong></p>
+
+
 <div style="margin-top: 30px; font-size: 1rem; color: #666;">
   <a href="kiniem.html" target="_blank" style="color: #333; text-decoration: underline;">
     Cùng anh xem lại một chút kỉ niệm của 2 đứa nhé
