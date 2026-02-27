@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <title>My Love</title>
+</head>
+
+<body>
+    <styles>
+        html,
+        body {
+        background: linear-gradient(to top, #8f91495d 0%, #ff949480 100%);
+        margin: 0;
+        padding: 0;
+        }
+
+        img {
+        max-width: 100%;
+        }
+
+        #mask {
+        background-image: linear-gradient(to top, #6d44cc5d 0%, #f09cd880 100%);
+        opacity: .42;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        }
+
+        body {
+        display: grid;
+        font-family: "Segoe UI", sans-serif;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        color: #000000;
+        text-shadow: 0.4px 0.4px 0.4px rgba(0, 0, 0, .2);
+        }
+
+        h1 {
+        font-weight: lighter;
+        grid-column: span 3;
+        text-align: center;
+        color: #ff0055;
+        }
+
+        #wrapper {
+        display: grid;
+        grid-column: 3 / 11;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(auto, auto);
+        grid-row-gap: 10px;
+        margin-top: 3.6rem;
+        }
+
+        #clock-box,
+        #info {
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        }
+
+        #clock-box #clock {
+        grid-column: 4 / 10;
+        background-color: #F8C8C8;
+        padding: .6rem 2rem;
+        padding-top: .8rem;
+        text-align: center;
+        font-size: 2.4rem;
+        border-radius: 10rem;
+        }
+
+        date,
+        month{
+        font-family: "Arial", sans-serif;
+        font-size: 18px;
+        }
+        year{
+        font-family: "Arial", sans-serif;
+        font-size: 18px;
+        }
+        time {
+        display: block;
+        }
+
+        date {
+        font-family: "Arial", sans-serif;
+        font-size: 18px;
+
+        time {
+        font-family: "Arial", sans-serif;
+        font-size: 18px;
+        }
+        }
+
+        .avt {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, .2);
+        }
+
+        #info {
+        margin-top: 2.6rem;
+        }
+
+        #heart {
+        grid-column: span 2;
+        display: grid;
+        grid-template-rows: 2;
+        font-size: 60px;
+        color: #b90d46;
+        align-self: center;
+        padding-bottom: 2.2rem;
+        text-align: center;
+        }
+
+        anni {
+        font-size: 20px;
+        letter-spacing: 0.2px;
+        margin-top: auto;
+        }
+
+        #info .one {
+        grid-column: 3 / 6;
+        text-align: center;
+        }
+
+        #info .two {
+        grid-column: 8 / 11;
+        text-align: center;
+        }
+
+        footer {
+        grid-column: span 3;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: lighter;
+        margin-top: 1.2rem;
+        }
+
+        #music {
+        grid-column: 2;
+        position: relative;
+        z-index: 1000;
+        opacity: .4;
+        }
+
+        #about {
+        font-size: 10px;
+        text-align: left;
+        opacity: .60;
+        color: black;
+        }
+
+        a:link {
+        color: black;
+        text-decoration: none;
+        }
+
+        a:visited {
+        color: black;
+        text-decoration: none;
+        }
+
+        a:hover {
+        color: #00ffee;
+        text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+        #wrapper {
+        grid-column: span 12;
+        }
+        #clock-box #clock {
+        grid-column: 2 / 12;
+        }
+        .avt {
+        width: 120px;
+        height: 120px;
+        }
+        #info .one,
+        #info .two {
+        grid-column: span 12;
+        ;
+        }
+        #heart {
+        grid-column: span 12;
+        padding-bottom: 1rem;
+        }
+        footer {
+        font-size: 1.2rem;
+        margin: 0;
+        padding-bottom: 2rem;
+        }
+        }
+        .snowflake {
+        position: absolute;
+        top: -10px;
+        color: white;
+        font-size: 1.5rem;
+        animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+        0% {
+        transform: translateY(0) rotate(0deg);
+        }
+        100% {
+        transform: translateY(100vh) rotate(360deg);
+        }
+        }
+
+        .flower {
+        position: absolute;
+        top: -10px;
+        color: pink;
+        font-size: 1.5rem;
+        animation: fall linear infinite;
+        }
+        #new-year-message {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        color: #ffcc00;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        animation: fadeInOut 5s infinite;
+        z-index: 1000;
+        }
+
+        @keyframes fadeInOut {
+        0%, 100% {
+        opacity: 0;
+        }
+        50% {
+        opacity: 1;
+        }
+        }
+        #christmas-message {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        color: #ff4444;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        animation: fadeInOut 5s infinite;
+        z-index: 1000;
+        }
+        .special-message {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 300px;
+        text-align: center;
+        }
+        .message-content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        }
+        .close-btn {
+        background-color: #ff5c5c;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        }
+
+        .close-btn:hover {
+        background-color: #ff3333;
+        }
+
+        .confetti {
+        position: absolute;
+        top: -10px;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+        animation: confettiFall 5s infinite;
+        }
+
+        @keyframes confettiFall {
+        0% {
+        transform: translateY(0) rotate(0deg);
+        }
+        100% {
+        transform: translateY(100vh) rotate(360deg);
+        }
+        }
+
+        .cake {
+        position: absolute;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #f3b0a3;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .candle {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        width: 4px;
+        height: 20px;
+        background-color: yellow;
+        transform: translateX(-50%);
+        }
+
+        .layers {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        height: 10px;
+        background-color: #f0b1d8;
+        }
+        /* Confetti */
+        .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: randomColor();
+        top: -10px;
+        border-radius: 50%;
+        animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+        to {
+        transform: translateY(100vh) rotate(720deg);
+        }
+        }
+
+        /* Cake
+        .cake {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 300px;
+        background: #f5a623;
+        border-radius: 5px;
+        text-align: center;
+        }
+
+        .candle {
+        width: 10px;
+        height: 50px;
+        background: #ffdd00;
+        margin: 0 auto;
+        border-radius: 5px;
+        position: relative;
+        top: -20px;
+        }
+
+        .candle::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 10px;
+        background: radial-gradient(circle, #fff, #f00);
+        border-radius: 50%;
+        } */
+
+        /* chuyển toàn bộ sang xám */
+        .grayscale {
+        filter: grayscale(100%);
+        transition: 2s ease;
+        }
+
+        /* popup chung */
+        .popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        }
+
+        .popup-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 420px;
+        animation: fadeIn 0.8s ease;
+        }
+
+        .popup-box textarea,
+        .popup-box input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        }
+
+        .popup-box button {
+        margin-top: 15px;
+        padding: 8px 18px;
+        cursor: pointer;
+        }
+
+        .gallery {
+        display: none;
+        margin-top: 30px;
+        }
+
+        .gallery img {
+        width: 160px;
+        margin: 8px;
+        border-radius: 8px;
+        }
+
+        @keyframes fadeIn {
+        from {opacity:0; transform: translateY(20px)}
+        to {opacity:1; transform: translateY(0)}
+        }
+    </styles>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const createEffect = (type) => {
+                const element = document.createElement("div");
+
+                if (type === "snow") {
+                    element.className = "snowflake";
+                    element.textContent = "❄";
+                    element.style.color = "white";
+                } else if (type === "flower") {
+                    element.className = "flower";
+                    element.textContent = "❀";
+                    element.style.color = "pink"; // Hoa đào
+                } else if (type === "mai") {
+                    element.className = "flower";
+                    element.textContent = "❀";
+                    element.style.color = "yellow"; // Hoa mai
+                }
+
+                element.style.left = Math.random() * 100 + "vw";
+                element.style.animationDuration = Math.random() * 5 + 5 + "s";
+                document.body.appendChild(element);
+
+                setTimeout(() => {
+                    element.remove();
+                }, 10000);
+            };
+
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            if (month === 12) {
+                setInterval(() => createEffect("snow"), 300);
+                const message = document.getElementById("christmas-message");
+                if (message) {
+                    message.style.display = "block";
+                }
+            } else if (month === 1) {
+                setInterval(() => createEffect("flower"), 300); // Hoa đào
+                setInterval(() => createEffect("mai"), 400);    // Hoa mai
+                const message = document.getElementById("new-year-message");
+                if (message) {
+                    message.style.display = "block";
+                }
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const displayMessage = (message, effects = false) => {
+                const messageBox = document.createElement("div");
+                messageBox.className = "special-message";
+                messageBox.innerHTML = `
+                    <div class="message-content">
+                        <p>${message}</p>
+                        <button class="close-btn">Close</button>
+                    </div>
+                `;
+                document.body.appendChild(messageBox);
+
+                const closeBtn = messageBox.querySelector(".close-btn");
+                closeBtn.addEventListener("click", () => {
+                    messageBox.remove();
+                });
+
+                if (effects) {
+                    createBirthdayEffects();
+                }
+            };
+
+            const createBirthdayEffects = () => {
+                const createConfetti = () => {
+                    const confetti = document.createElement("div");
+                    confetti.className = "confetti";
+                    confetti.style.left = Math.random() * 100 + "vw";
+                    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 5000);
+                };
+
+                // const createCake = () => {
+                //     const cake = document.createElement("div");
+                //     cake.className = "cake";
+                //     cake.innerHTML = `<div class='candle'></div><div class='layers'></div>`;
+                //     document.body.appendChild(cake);
+                // };
+
+                createCake();
+                for (let i = 0; i < 100; i++) {
+                    createConfetti();
+                }
+            };
+
+            const calculateAnniversary = (startDate) => {
+                const now = new Date();
+                const years = now.getFullYear() - startDate.getFullYear();
+                const months = now.getMonth() - startDate.getMonth() + (years * 12);
+                return { years: Math.floor(months / 12), months: months % 12 };
+            };
+
+            const checkSpecialDay = () => {
+                const today = new Date();
+                // const date = 27;
+                // const month = 10;
+                const day = now.getDate();
+                const month = now.getMonth() + 1;
+
+                if (month === 8 && date === 12) {
+                    displayMessage("Chúc mừng sinh nhật Cục Dàng của anh", true);
+                } else if (month === 10 && date === 27) {
+                    displayMessage("Chúc mừng sinh nhật Anh iu", true);
+                }
+            };
+
+            checkSpecialDay();
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function isJuly12() {
+                const now = new Date();
+                const day = now.getDate();
+                const month = now.getMonth() + 1;
+
+                return day === 12 && month === 7;
+            }
+
+            if (isJuly12()) {
+                const rootTime = document.querySelector("time");
+                const anniElement = document.querySelector("anni");
+                const dateElement = document.querySelector("date");
+                const yearElement = document.querySelector("year");
+                const monthElement = document.querySelector("month");
+
+                function updateCountdown(startDate) {
+                    const now = new Date();
+                    now.setHours(now.getHours() + 7); // Chuyển về múi giờ GMT+7
+
+                    let years = now.getFullYear() - startDate.getFullYear();
+                    let months = now.getMonth() - startDate.getMonth();
+                    let days = now.getDate() - startDate.getDate();
+
+                    if (days < 0) {
+                        months -= 1;
+                        const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                        days += previousMonth.getDate();
+                    }
+
+                    if (months < 0) {
+                        years -= 1;
+                        months += 12;
+                    }
+
+                    anniElement.textContent = formatDate(startDate);
+                    yearElement.textContent = years + " NĂM";
+                    monthElement.textContent = months + " THÁNG";
+                    dateElement.textContent = days + " NGÀY";
+
+                    const anniversaryMessage = `Hôm nay là ngày kỉ niệm ${years} năm, ${months} tháng chúng ta quen nhau. Anh chúc bé luôn luôn xinh đẹp và chúng ta luôn hạnh phúc bên nhau nhé.`;
+                    displayMessage(anniversaryMessage);
+                }
+
+                function formatDate(date) {
+                    const day = date.getDate();
+                    const month = date.getMonth() + 1;
+                    const year = date.getFullYear();
+                    return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+                }
+
+                const displayMessage = (message) => {
+                    const messageBox = document.createElement("div");
+                    messageBox.className = "special-message";
+                    messageBox.innerHTML = `
+                        <div class="message-content">
+                            <p>${message}</p>
+                            <button class="close-btn">Close</button>
+                        </div>
+                    `;
+                    document.body.appendChild(messageBox);
+
+                    const closeBtn = messageBox.querySelector(".close-btn");
+                    closeBtn.addEventListener("click", () => {
+                        messageBox.remove();
+                    });
+                };
+
+                function testAnniversary() {
+                    const startDate = new Date("2022-07-12T00:00:00");
+                    updateCountdown(startDate);
+                }
+
+                testAnniversary();
+            }
+        });
+    </script>
+
+    <div class="mask"></div>
+    <div id="wrapper">
+        <div id="new-year-message" style="display: none;">🎉 Chúc Mừng Năm Mới! 🎉</div>
+        <div id="christmas-message" style="display: none;">🎄 Merry Christmas! 🎄</div>
+        <div style="margin-top: 10px;"></div>
+        <h1><b>LOVE DAYS</b></h1>
+
+        <div id="clock-box">
+            <div id="clock">
+                <year>0 YEAR </year>
+                <month>0 MONTH</month>
+                <date>0 DAYS</date>
+                <time>00:00:00</time>
+            </div>
+        </div>
+
+        <div id="info">
+            <div class="one">
+                <img src="img/image1.png" class="avt">
+                <p>
+                <div class="mars">
+                    <i class="fa fa-mars" aria-hidden="true" style="color: blue; font-size: 20px;"></i>
+                </div>
+                <br>
+                <a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100022374431079"
+                    target="_blank"><b> Trương Ngọc Phú</b></a>
+                </p>
+            </div>
+
+            <div id="heart">
+                <center>
+                    ❤
+                </center>
+                <anni><b>00/00/0000</b></anni>
+            </div>
+
+            <div class="two">
+                <img src="img/image2.png" class="avt">
+                <p>
+                <div class="venus">
+                    <i class="fa fa-venus" aria-hidden="true" style="color: red; font-size: 20px;"></i>
+                </div>
+                <br>
+                <a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100074095176082"
+                    target="_blank"><b> Đỗ Nguyễn Hoàng Lam</b></a>
+                </p>
+            </div>
+        </div>
+
+        <div id="music">
+            <center>
+                <audio loop autoplay controls>Your browser does not support the audio element.</audio>
+            </center>
+        </div>
+
+        <footer>
+            <center><b>Thank you for your love 💕</b></center>
+        </footer>
+
+        <div id="about">
+            Code by<a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100022374431079"
+                target="_blank" style="color: black;">Trương Ngọc Phú</a>
+        </div>
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!-- ================= MEMORIES SECTION ================= -->
+<script src="https://cdn.jsdelivr.net/npm/heic2any/dist/heic2any.min.js"></script>
+<div class="memories">
+    <div class="memory-header">
+        <h2>Những Khoảnh Khắc Đã Từng</h2>
+        <p>Mỗi bức ảnh là một đoạn ký ức.</p>
+    </div>
+
+    <div class="memory-grid">
+        <div class="memory-item"><img src="img/8.jpg"></div>
+        <div class="memory-item large"><img src="img/1.jpg"></div>
+        <div class="memory-item"><img src="img/2.jpg"></div>
+        <div class="memory-item tall"><img src="img/5.jpg"></div>
+        <div class="memory-item"><img src="img/3.jpg"></div>
+        <div class="memory-item tall"><img src="img/7.jpg"></div>
+        <div class="memory-item"><img src="img/6.jpg"></div>
+
+        <!-- 10 ảnh mới -->
+        <div class="memory-item"><img src="img/7.jpg"></div>
+        <div class="memory-item large"><img src="img/4.jpg"></div>
+        <div class="memory-item"><img src="img/9.jpg"></div>
+        <div class="memory-item tall"><img src="img/10.jpg"></div>
+        <div class="memory-item"><img src="img/11.jpg"></div>
+        <div class="memory-item wide"><img src="img/12.jpg"></div>
+        <div class="memory-item"><img src="img/13.jpg"></div>
+        <div class="memory-item"><img src="img/14.jpg"></div>
+        <div class="memory-item tall"><img src="img/15.JPG"></div>
+        <div class="memory-item"><img src="img/16.jpg"></div>
+        <!-- 20 ảnh mới -->
+        <div class="memory-item"><img src="img/17.jpg"></div>
+        <div class="memory-item tall"><img src="img/18.jpg"></div>
+        <div class="memory-item tall"><img src="img/19.jpeg"></div>
+        <div class="memory-item large"><img src="img/20.jpeg"></div>
+        <div class="memory-item large"><img src="img/21.jpeg"></div>
+        <div class="memory-item tall"><img src="img/22.jpeg"></div>
+        <div class="memory-item"><img src="img/23.jpeg"></div>
+        <!-- <div class="memory-item tall"><img src="img/24.jpg"></div>
+        <div class="memory-item"><img src="img/25.jpg"></div>
+        <div class="memory-item tall"><img src="img/26.jpg"></div>
+        <div class="memory-item"><img src="img/27.jpg"></div>
+        <div class="memory-item tall"><img src="img/28.jpg"></div>
+        <div class="memory-item"><img src="img/29.jpg"></div>
+        <div class="memory-item tall"><img src="img/30.jpg"></div>
+        <div class="memory-item"><img src="img/31.jpg"></div>
+        <div class="memory-item tall"><img src="img/32.jpg"></div>
+        <div class="memory-item"><img src="img/33.jpg"></div>
+        <div class="memory-item tall"><img src="img/34.jpg"></div>
+        <div class="memory-item"><img src="img/35.jpg"></div>
+        <div class="memory-item tall"><img src="img/36.jpg"></div> -->
+
+    </div>
+</div>
+
+<!-- ================= FULLSCREEN VIEW ================= -->
+<div class="memory-view" id="memoryView">
+    <span class="memory-close" id="memoryClose">✕</span>
+    <img id="memoryImg" style="display:none;">
+    <video id="memoryVideo" controls style="display:none; max-width:90%; max-height:85%; border-radius:14px;"></video>
+</div>
+<style>
+    /* SECTION */
+    .memories {
+        padding: 100px 20px;
+        background: #f8fafc;
+    }
+
+    .memory-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .memory-header h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 10px;
+    }
+
+    .memory-header p {
+        color: #777;
+        font-size: 0.95rem;
+    }
+
+    /* GRID */
+    .memory-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+    }
+
+    .memory-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        transition: 0.4s ease;
+        aspect-ratio: 4/5;
+        cursor: pointer;
+    }
+
+    .memory-item.large {
+        grid-column: span 2;
+        aspect-ratio: 16/9;
+    }
+
+    .memory-item.tall {
+        aspect-ratio: 3/5;
+    }
+
+    .memory-item.wide {
+        aspect-ratio: 5/3;
+    }
+
+    .memory-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.6s cubic-bezier(.22, .61, .36, 1);
+        filter: grayscale(60%) brightness(.95);
+    }
+
+    /* Hover */
+    .memory-item::after {
+        content: "Xem ảnh";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: .9rem;
+        letter-spacing: 2px;
+        background: rgba(0, 0, 0, .25);
+        opacity: 0;
+        transition: .4s;
+    }
+
+    .memory-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, .12);
+    }
+
+    .memory-item:hover img {
+        transform: scale(1.08);
+        filter: grayscale(0) brightness(1);
+    }
+
+    .memory-item:hover::after {
+        opacity: 1;
+    }
+
+    /* FULLSCREEN */
+    .memory-view {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: .4s ease;
+        z-index: 9999;
+    }
+
+    .memory-view.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .memory-view img {
+        max-width: 90%;
+        max-height: 85%;
+        border-radius: 14px;
+        box-shadow: 0 0 80px rgba(0, 0, 0, .6);
+        animation: fadeZoom .4s ease;
+    }
+
+    .memory-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+        opacity: .8;
+        transition: .25s;
+    }
+
+    .memory-close:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    @keyframes fadeZoom {
+        from {
+            transform: scale(.9);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+        .memory-item.large {
+            grid-column: span 1;
+        }
+    }
+
+    .video-item::before {
+        content: "▶";
+        position: absolute;
+        font-size: 40px;
+        color: white;
+        z-index: 2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+    }
+
+    .video-item img {
+        filter: brightness(0.7);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const view = document.getElementById("memoryView");
+        const imgTag = document.getElementById("memoryImg");
+        const videoTag = document.getElementById("memoryVideo");
+        const closeBtn = document.getElementById("memoryClose");
+
+        let currentBlobUrl = null;
+
+        // ================= OPEN VIEWER =================
+        async function openViewer(src) {
+
+            if (!src) return;
+
+            // Reset trạng thái
+            imgTag.style.display = "none";
+            videoTag.style.display = "none";
+            videoTag.pause();
+            videoTag.removeAttribute("src");
+            videoTag.load();
+
+            // Nếu có blob cũ thì huỷ
+            if (currentBlobUrl) {
+                URL.revokeObjectURL(currentBlobUrl);
+                currentBlobUrl = null;
+            }
+
+            const ext = src.split(".").pop().toLowerCase();
+
+            try {
+
+                // ===== VIDEO =====
+                if (["mp4", "mov", "webm"].includes(ext)) {
+
+                    videoTag.src = src;
+                    videoTag.style.display = "block";
+                    videoTag.load();
+                }
+
+                // ===== HEIC =====
+                else if (ext === "heic") {
+
+                    const response = await fetch(src);
+                    const blob = await response.blob();
+
+                    const converted = await heic2any({
+                        blob: blob,
+                        toType: "image/jpeg",
+                        quality: 0.9
+                    });
+
+                    currentBlobUrl = URL.createObjectURL(converted);
+                    imgTag.src = currentBlobUrl;
+                    imgTag.style.display = "block";
+                }
+
+                // ===== IMAGE THƯỜNG =====
+                else {
+
+                    imgTag.src = src;
+                    imgTag.style.display = "block";
+                }
+
+                view.classList.add("show");
+                document.body.style.overflow = "hidden";
+
+            } catch (error) {
+                console.error("Lỗi khi mở media:", error);
+            }
+        }
+
+        // ================= CLICK ITEM =================
+        document.querySelectorAll(".memory-item").forEach(item => {
+
+            item.addEventListener("click", function () {
+
+                let media = this.querySelector("img, video");
+
+                if (!media) return;
+
+                let src = media.getAttribute("src");
+
+                if (!src) return;
+
+                openViewer(src);
+            });
+
+        });
+
+        // ================= CLOSE VIEWER =================
+        function closeViewer() {
+
+            view.classList.remove("show");
+            document.body.style.overflow = "auto";
+
+            videoTag.pause();
+            videoTag.removeAttribute("src");
+            videoTag.load();
+
+            if (currentBlobUrl) {
+                URL.revokeObjectURL(currentBlobUrl);
+                currentBlobUrl = null;
+            }
+        }
+
+        closeBtn.addEventListener("click", closeViewer);
+
+        view.addEventListener("click", function (e) {
+            if (e.target === view) closeViewer();
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") closeViewer();
+        });
+
+    });
+</script>

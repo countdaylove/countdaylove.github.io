@@ -1,280 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
-    <title>My Love</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Không còn đếm nữa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            min-height: 100vh;
+            background: #eef0f2;
+            font-family: system-ui;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            filter: grayscale(100%);
+        }
+
+        /* CARD */
+        .card {
+            background: #fff;
+            width: 100%;
+            max-width: 460px;
+            padding: 40px 28px;
+            border-radius: 22px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .08);
+            text-align: center;
+        }
+
+        /* TITLE */
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* TIME BOX */
+        .time-box {
+            background: #f3f4f6;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 30px;
+        }
+
+        .love-days {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        #fixed-time {
+            margin-top: 8px;
+            color: #888;
+            font-size: .9rem;
+        }
+
+        /* COUPLE */
+        .couple {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .person {
+            text-align: center
+        }
+
+        .avatar {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f1f1f1;
+        }
+
+        .gender {
+            font-size: 1.3rem;
+            margin: 6px 0;
+            color: #999;
+        }
+
+        .heart {
+            font-size: 3.5rem;
+            color: #bbb;
+        }
+
+        .anni {
+            font-size: .8rem;
+            color: #999;
+        }
+
+        /* POPUP */
+.popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        z-index: 1000;
+    }
+
+    .popup-box {
+        background: #fff;
+        padding: 24px 20px;
+        border-radius: 16px;
+        max-width: 460px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .popup-box h3 {
+        font-size: 1.35rem;
+        margin-bottom: 16px;
+        color: #222;
+    }
+
+    .popup-box p {
+        text-align: left;
+        font-size: 0.96rem;
+        line-height: 1.65;
+        margin-bottom: 14px;
+        color: #444;
+    }
+
+    .popup-box strong {
+        color: #222;
+    }
+
+    .popup-box button {
+        margin-top: 20px;
+        padding: 10px 28px;
+        background: #333;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .popup-box button:hover {
+        background: #555;
+    }
+
+    @media (max-width: 480px) {
+        .popup-box {
+            padding: 20px 16px;
+        }
+        .popup-box h3 {
+            font-size: 1.25rem;
+        }
+        .popup-box p {
+            font-size: 0.92rem;
+        }
+    }
+    </style>
 </head>
 
 <body>
-    <script src="app.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const createEffect = (type) => {
-                const element = document.createElement("div");
 
-                if (type === "snow") {
-                    element.className = "snowflake";
-                    element.textContent = "❄";
-                    element.style.color = "white";
-                } else if (type === "flower") {
-                    element.className = "flower";
-                    element.textContent = "❀";
-                    element.style.color = "pink"; // Hoa đào
-                } else if (type === "mai") {
-                    element.className = "flower";
-                    element.textContent = "❀";
-                    element.style.color = "yellow"; // Hoa mai
-                }
+    <div class="card">
+        <h1>LOVE DAYS</h1>
 
-                element.style.left = Math.random() * 100 + "vw";
-                element.style.animationDuration = Math.random() * 5 + 5 + "s";
-                document.body.appendChild(element);
-
-                setTimeout(() => {
-                    element.remove();
-                }, 10000);
-            };
-
-            const now = new Date();
-            const month = now.getMonth() + 1;
-            if (month === 12) {
-                setInterval(() => createEffect("snow"), 300);
-                const message = document.getElementById("christmas-message");
-                if (message) {
-                    message.style.display = "block";
-                }
-            } else if (month === 1) {
-                setInterval(() => createEffect("flower"), 300); // Hoa đào
-                setInterval(() => createEffect("mai"), 400);    // Hoa mai
-                const message = document.getElementById("new-year-message");
-                if (message) {
-                    message.style.display = "block";
-                }
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const displayMessage = (message, effects = false) => {
-                const messageBox = document.createElement("div");
-                messageBox.className = "special-message";
-                messageBox.innerHTML = `
-                    <div class="message-content">
-                        <p>${message}</p>
-                        <button class="close-btn">Close</button>
-                    </div>
-                `;
-                document.body.appendChild(messageBox);
-
-                const closeBtn = messageBox.querySelector(".close-btn");
-                closeBtn.addEventListener("click", () => {
-                    messageBox.remove();
-                });
-
-                if (effects) {
-                    createBirthdayEffects();
-                }
-            };
-
-            const createBirthdayEffects = () => {
-                const createConfetti = () => {
-                    const confetti = document.createElement("div");
-                    confetti.className = "confetti";
-                    confetti.style.left = Math.random() * 100 + "vw";
-                    confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-                    document.body.appendChild(confetti);
-
-                    setTimeout(() => confetti.remove(), 5000);
-                };
-
-                // const createCake = () => {
-                //     const cake = document.createElement("div");
-                //     cake.className = "cake";
-                //     cake.innerHTML = `<div class='candle'></div><div class='layers'></div>`;
-                //     document.body.appendChild(cake);
-                // };
-
-                createCake();
-                for (let i = 0; i < 100; i++) {
-                    createConfetti();
-                }
-            };
-
-            const calculateAnniversary = (startDate) => {
-                const now = new Date();
-                const years = now.getFullYear() - startDate.getFullYear();
-                const months = now.getMonth() - startDate.getMonth() + (years * 12);
-                return { years: Math.floor(months / 12), months: months % 12 };
-            };
-
-            const checkSpecialDay = () => {
-                const today = new Date();
-                // const date = 27;
-                // const month = 10;
-                const day = now.getDate();
-                const month = now.getMonth() + 1;
-
-                if (month === 8 && date === 12) {
-                    displayMessage("Chúc mừng sinh nhật Cục Dàng của anh", true);
-                } else if (month === 10 && date === 27) {
-                    displayMessage("Chúc mừng sinh nhật Anh iu", true);
-                }
-            };
-
-            checkSpecialDay();
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            function isJuly12() {
-                const now = new Date();
-                const day = now.getDate();
-                const month = now.getMonth() + 1;
-
-                return day === 12 && month === 7;
-            }
-
-            if (isJuly12()) {
-                const rootTime = document.querySelector("time");
-                const anniElement = document.querySelector("anni");
-                const dateElement = document.querySelector("date");
-                const yearElement = document.querySelector("year");
-                const monthElement = document.querySelector("month");
-
-                function updateCountdown(startDate) {
-                    const now = new Date();
-                    now.setHours(now.getHours() + 7); // Chuyển về múi giờ GMT+7
-
-                    let years = now.getFullYear() - startDate.getFullYear();
-                    let months = now.getMonth() - startDate.getMonth();
-                    let days = now.getDate() - startDate.getDate();
-
-                    if (days < 0) {
-                        months -= 1;
-                        const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-                        days += previousMonth.getDate();
-                    }
-
-                    if (months < 0) {
-                        years -= 1;
-                        months += 12;
-                    }
-
-                    anniElement.textContent = formatDate(startDate);
-                    yearElement.textContent = years + " NĂM";
-                    monthElement.textContent = months + " THÁNG";
-                    dateElement.textContent = days + " NGÀY";
-
-                    const anniversaryMessage = `Hôm nay là ngày kỉ niệm ${years} năm, ${months} tháng chúng ta quen nhau. Anh chúc bé luôn luôn xinh đẹp và chúng ta luôn hạnh phúc bên nhau nhé.`;
-                    displayMessage(anniversaryMessage);
-                }
-
-                function formatDate(date) {
-                    const day = date.getDate();
-                    const month = date.getMonth() + 1;
-                    const year = date.getFullYear();
-                    return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
-                }
-
-                const displayMessage = (message) => {
-                    const messageBox = document.createElement("div");
-                    messageBox.className = "special-message";
-                    messageBox.innerHTML = `
-                        <div class="message-content">
-                            <p>${message}</p>
-                            <button class="close-btn">Close</button>
-                        </div>
-                    `;
-                    document.body.appendChild(messageBox);
-
-                    const closeBtn = messageBox.querySelector(".close-btn");
-                    closeBtn.addEventListener("click", () => {
-                        messageBox.remove();
-                    });
-                };
-
-                function testAnniversary() {
-                    const startDate = new Date("2022-07-12T00:00:00");
-                    updateCountdown(startDate);
-                }
-
-                testAnniversary();
-            }
-        });
-    </script>
-
-    <div class="mask"></div>
-    <div id="wrapper">
-        <div id="new-year-message" style="display: none;">🎉 Chúc Mừng Năm Mới! 🎉</div>
-        <div id="christmas-message" style="display: none;">🎄 Merry Christmas! 🎄</div>
-        <div style="margin-top: 10px;"></div>
-        <h1><b>LOVE DAYS</b></h1>
-
-        <div id="clock-box">
-            <div id="clock">
-                <year>0 YEAR </year>
-                <month>0 MONTH</month>
-                <date>0 DAYS</date>
-                <time>00:00:00</time>
+        <div class="time-box">
+            <div class="love-days">
+                <span id="years"></span> năm
+                <span id="months"></span> tháng
+                <span id="days"></span> ngày
             </div>
+            <div id="fixed-time"></div>
         </div>
 
-        <div id="info">
-            <div class="one">
-                <img src="img/image1.png" class="avt">
-                <p>
-                <div class="mars">
-                    <i class="fa fa-mars" aria-hidden="true" style="color: blue; font-size: 20px;"></i>
-                </div>
-                <br>
-                <a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100022374431079"
-                    target="_blank"><b> Trương Ngọc Phú</b></a>
-                </p>
+        <div class="couple">
+            <div class="person">
+                <img src="img/image1.png" class="avatar">
+                <div class="gender"><i class="fas fa-mars"></i></div>
+                <div>Trương Ngọc Phú</div>
             </div>
 
-            <div id="heart">
-                <center>
-                    ❤
-                </center>
-                <anni><b>00/00/0000</b></anni>
+            <div>
+                <div class="heart">❤</div>
+                <div class="anni">12/07/2022</div>
             </div>
 
-            <div class="two">
-                <img src="img/image2.png" class="avt">
-                <p>
-                <div class="venus">
-                    <i class="fa fa-venus" aria-hidden="true" style="color: red; font-size: 20px;"></i>
-                </div>
-                <br>
-                <a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100074095176082"
-                    target="_blank"><b> Đỗ Nguyễn Hoàng Lam</b></a>
-                </p>
+            <div class="person">
+                <img src="img/image2.png" class="avatar">
+                <div class="gender"><i class="fas fa-venus"></i></div>
+                <div>Đỗ Nguyễn Hoàng Lam</div>
             </div>
-        </div>
-
-        <div id="music">
-            <center>
-                <audio loop autoplay controls>Your browser does not support the audio element.</audio>
-            </center>
-        </div>
-
-        <footer>
-            <center><b>Thank you for your love 💕</b></center>
-        </footer>
-
-        <div id="about">
-            Code by<a style="text-decoration: none" href="https://www.facebook.com/profile.php?id=100022374431079"
-                target="_blank" style="color: black;">Trương Ngọc Phú</a>
         </div>
     </div>
+
+    <script>
+        const startDate = new Date("2022-07-12T00:00:00");
+        const endDate = new Date("2026-02-27T10:41:53"); // thời điểm dừng
+
+        let years = endDate.getFullYear() - startDate.getFullYear();
+        let months = endDate.getMonth() - startDate.getMonth();
+        let days = endDate.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const prev = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+            days += prev.getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        document.getElementById("years").textContent = years;
+        document.getElementById("months").textContent = months;
+        document.getElementById("days").textContent = days;
+
+        document.getElementById("fixed-time").textContent =
+            endDate.toLocaleDateString('vi-VN') + " " +
+            endDate.toLocaleTimeString('vi-VN');
+
+        /* POPUP */
+        window.onload = () => {
+            const popup = document.createElement("div");
+            popup.className = "popup";
+popup.innerHTML = `
+<div class="popup-box">
+    <h3>Không còn đếm tiếp, nhưng vẫn còn nhớ.</h3>
+
+    <p><strong>3 năm 7 tháng 15 ngày</strong> — một hành trình đã từng rất đẹp.<br>Mỗi người rồi sẽ bước tiếp, chỉ là không còn cùng nhau.</p>
+
+    <p>Vậy là thật sự kết thúc rồi. 3 năm 7 tháng 15 ngày — một khoảng thời gian không hề ngắn. Chúng ta đã cùng nhau đi qua rất nhiều kỷ niệm, có đẹp, có xấu, có vui, có buồn… và chắc chắn tất cả vẫn sẽ còn đọng lại đâu đó trong ký ức của cả hai.</p>
+
+    <p>Anh biết rằng khi không còn anh, có thể em sẽ nhẹ lòng hơn, vui vẻ hơn, có nhiều bạn bè hơn và được sống đúng với sự tự do của mình. Anh nhận ra bản thân đã quá ích kỷ, luôn muốn giữ em cho riêng mình, vô tình khiến em ngột ngạt.</p>
+
+    <p>Vì cảm xúc cá nhân và sự nóng nảy, anh đã nhiều lần lớn tiếng, làm em tổn thương và không tôn trọng em theo cách mà em xứng đáng được nhận.</p>
+
+    <p>Anh thật lòng cảm ơn em vì trong suốt hơn 3 năm qua, em đã cho anh rất nhiều cơ hội để thay đổi. Nhưng anh cũng phải thừa nhận rằng anh đã không làm tốt. Sự hối hận bây giờ có lẽ đã muộn, nhưng nó là điều chân thật nhất anh đang mang theo.</p>
+
+    <p>Khi em đọc những dòng này, anh không mong em quay lại, cũng không muốn em phải bận lòng thêm. Anh chỉ muốn em biết rằng anh thực sự trân trọng khoảng thời gian chúng ta đã có, và anh xin lỗi vì những tổn thương mà anh đã gây ra.</p>
+
+    <p>Không phải lời xin lỗi để níu kéo, mà là lời xin lỗi để em có thể bước tiếp nhẹ nhàng hơn, và để anh đối diện với những thiếu sót của mình một cách trưởng thành.</p>
+
+    <p>Anh hy vọng rằng sau này, dù em đi cùng ai, em vẫn sẽ được yêu thương, được tôn trọng và được là chính mình — theo cách mà đáng lẽ anh phải làm tốt hơn.</p>
+
+    <p>Cảm ơn em vì đã từng xuất hiện trong cuộc đời anh, đã yêu anh, đã kiên nhẫn với anh, và đã cho anh những ký ức mà anh sẽ luôn trân trọng.</p>
+
+    <p><strong>Chúc em bình an và hạnh phúc trên con đường phía trước.</strong></p>
+<div style="margin-top: 30px; font-size: 1rem; color: #666;">
+  <a href="kiniem.html" target="_blank" style="color: #333; text-decoration: underline;">
+    Cùng anh xem lại một chút kỉ niệm của 2 đứa nhé
+  </a>
+</div>
+    <button onclick="this.closest('.popup').remove()">Đóng</button>
+</div>
+`;
+            document.body.appendChild(popup);
+        }
+    </script>
+
 </body>
 
 </html>
